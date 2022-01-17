@@ -81,22 +81,27 @@ async function retrieveWo(woNum) {
   return new Promise((resolve, reject) => {
     soap.createClient(url, function (err, client) {
       client.setSecurity(wsSecurity);
-      client.read(args, function (err, result) {
-        try {
-          if (1 === 1) {
-            resolve(result["out"]);
-          } else {
-            //Retrieve has failed, show error message and reject the results
-            console.log("error 1");
-            console.log(result);
-            reject(result.out.errors);
+      client.read(
+        args,
+        function (err, result) {
+          try {
+            if (1 === 1) {
+              resolve(result["out"]);
+            } else {
+              //Retrieve has failed, show error message and reject the results
+              console.log("Read error 1");
+              console.log(result);
+              console.log(err);
+              reject(result.out.errors);
+            }
+          } catch (e) {
+            //Retrieve has failed, show error message
+            console.log("Read error 2");
+            console.log(err);
           }
-        } catch (e) {
-          //Retrieve has failed, show error message
-          console.log("error 2");
-          console.log(result);
-        }
-      });
+        },
+        { timeout: 10000 }
+      );
     });
   });
 }
@@ -121,31 +126,35 @@ async function cloneWo(iter, woNum) {
   }
 
   async function createWo(args) {
-    return new Promise((resolve, reject) => {
-      soap.createClient(url, function (err, client) {
-        client.setSecurity(wsSecurity);
-        client.create(args, function (err, result) {
-          try {
-            if (1 === 1) {
-              console.log(
-                result["out"]["workOrder"]["prefix"] +
-                  result["out"]["workOrder"]["no"]
-              );
-              resolve(result["out"]);
-            } else {
-              //Create has failed, show error message and reject the results
-              console.log("error 1");
-              console.log(result);
-              reject(result.out.errors);
+    return new Promise(
+      (resolve, reject) => {
+        soap.createClient(url, function (err, client) {
+          client.setSecurity(wsSecurity);
+          client.create(args, function (err, result) {
+            try {
+              if (1 === 1) {
+                console.log(
+                  result["out"]["workOrder"]["prefix"] +
+                    result["out"]["workOrder"]["no"]
+                );
+                resolve(result["out"]);
+              } else {
+                //Create has failed, show error message and reject the results
+                console.log("Create error 1");
+                console.log(result);
+                console.log(err);
+                reject(result.out.errors);
+              }
+            } catch (e) {
+              //Create has failed, show error message
+              console.log("Create error 2");
+              console.log(err);
             }
-          } catch (e) {
-            //Create has failed, show error message
-            console.log("error 2");
-            console.log(result);
-          }
+          });
         });
-      });
-    });
+      },
+      { timeout: 10000 }
+    );
   }
 }
 
