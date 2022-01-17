@@ -1,5 +1,5 @@
 {
-  "name": "clonewo",
+  "name": "ellipse-wo-cloner",
   "version": "1.0.0",
   "description": "Clones a given work order a certain number of times",
   "main": "app.js",
