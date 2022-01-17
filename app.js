@@ -84,17 +84,15 @@ async function retrieveWo(woNum) {
       client.read(args, function (err, result) {
         try {
           if (1 === 1) {
-            //           console.log(result["out"]["TableCodeServiceResult"]);
-            //  console.log(result["out"]);
             resolve(result["out"]);
           } else {
-            //Delete has failed, show error message and reject the results
+            //Retrieve has failed, show error message and reject the results
             console.log("error 1");
             console.log(result);
             reject(result.out.errors);
           }
         } catch (e) {
-          //Delete has failed, show error message
+          //Retrieve has failed, show error message
           console.log("error 2");
           console.log(result);
         }
@@ -129,20 +127,19 @@ async function cloneWo(iter, woNum) {
         client.create(args, function (err, result) {
           try {
             if (1 === 1) {
-              //           console.log(result["out"]["TableCodeServiceResult"]);
               console.log(
                 result["out"]["workOrder"]["prefix"] +
                   result["out"]["workOrder"]["no"]
               );
               resolve(result["out"]);
             } else {
-              //Delete has failed, show error message and reject the results
+              //Create has failed, show error message and reject the results
               console.log("error 1");
               console.log(result);
               reject(result.out.errors);
             }
           } catch (e) {
-            //Delete has failed, show error message
+            //Create has failed, show error message
             console.log("error 2");
             console.log(result);
           }
