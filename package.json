@@ -1,0 +1,15 @@
+{
+  "name": "clonewo",
+  "version": "1.0.0",
+  "description": "Clones a given work order a certain number of times",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.2.0",
+    "soap": "^0.43.0"
+  }
+}
