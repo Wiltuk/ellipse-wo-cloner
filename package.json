@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Adrian Hardy",
+  "license": "GPLv3",
   "dependencies": {
     "inquirer": "^8.2.0",
     "soap": "^0.43.0"
