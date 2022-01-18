@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Adrian Hardy",
-  "license": "GPLv3",
+  "license": "GPL-3.0-only",
   "dependencies": {
     "inquirer": "^8.2.0",
     "soap": "^0.43.0"
