@@ -122,7 +122,7 @@ async function cloneWo(iter, woNum) {
   let wsSecurity = new soap.WSSecurity(username, password, secOptions);
 
   for (let i = 0; i < iter; i++) {
-    createWo(args);
+   await createWo(args);
   }
 
   async function createWo(args) {
